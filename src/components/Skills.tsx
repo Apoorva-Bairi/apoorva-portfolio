@@ -45,8 +45,10 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
-            Technical Skills
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+              Technical Skills
+            </span>
           </h2>
           <p className="text-gray-400 text-lg">
             Tools and technologies I work with
@@ -64,7 +66,7 @@ const Skills = () => {
             <motion.div
               key={groupIdx}
               variants={skillCategoryVariants}
-              className="bg-slate-800/30 border border-slate-700 rounded-xl p-6 hover:border-blue-600 transition-colors"
+              className="bg-slate-800/30 border border-slate-700/50 rounded-xl p-6 hover:border-blue-500/50 transition-colors"
             >
               <h3 className="text-2xl font-bold text-blue-400 mb-6 flex items-center">
                 <span className="w-2 h-2 bg-blue-400 rounded-full mr-3" />
@@ -82,7 +84,7 @@ const Skills = () => {
                     key={idx}
                     variants={skillItemVariants}
                     whileHover="hover"
-                    className="px-4 py-2 bg-slate-700 border border-slate-600 text-blue-400 rounded-lg hover:bg-slate-600 transition-all duration-300 cursor-pointer text-sm font-medium"
+                    className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/50 text-gray-200 rounded-lg hover:border-blue-400 hover:bg-blue-500/30 transition-all duration-300 cursor-pointer text-sm font-medium"
                   >
                     {skill}
                   </motion.div>
@@ -98,10 +100,10 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="mt-12 bg-slate-800/30 border border-slate-700 rounded-xl p-8"
+          className="mt-12 bg-slate-800/30 border border-slate-700/50 rounded-xl p-8"
         >
-          <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-3" />
+          <h3 className="text-2xl font-bold text-blue-400 mb-6 flex items-center">
+            <span className="w-2 h-2 bg-blue-400 rounded-full mr-3" />
             Certifications
           </h3>
           <motion.div
@@ -116,7 +118,7 @@ const Skills = () => {
                 key={idx}
                 variants={skillItemVariants}
                 whileHover="hover"
-                className="p-4 bg-slate-700 border border-slate-600 rounded-lg hover:border-blue-600 hover:bg-slate-600 transition-all duration-300"
+                className="p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 rounded-lg hover:border-green-400 hover:bg-green-500/30 transition-all duration-300"
               >
                 <p className="text-gray-200 font-medium text-sm">{cert}</p>
               </motion.div>
