@@ -53,7 +53,7 @@ const Experience = () => {
           {/* Timeline Line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500/50 via-purple-500/50 to-transparent transform md:-translate-x-1/2" />
 
-          {resumeData.experience.map((exp, idx) => (
+          {resumeData.experience.map((exp) => (
             <motion.div
               key={exp.id}
               variants={cardVariants}
