@@ -33,7 +33,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,6 +58,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {contactMethods.map((method, idx) => {
             const Icon = method.icon;
+
             return (
               <motion.a
                 key={idx}
@@ -88,69 +89,132 @@ const Contact = () => {
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 text-center"
-        >
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Interested in working together?
-          </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <motion.form
+            action={`https://formsubmit.co/${resumeData.email}`}
+            method="POST"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 text-left"
+          >
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Send Me a Message
+            </h3>
 
-          <p className="text-gray-400 mb-8">
-            I’d be happy to discuss frontend development, MERN stack projects,
-            or UI-focused web application roles.
-          </p>
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="hidden"
+              name="_next"
+              value="https://apoorva-portfolio-1.netlify.app/"
+            />
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
-            <motion.a
-              href={`mailto:${resumeData.email}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all"
+            <div className="mb-4">
+              <label className="block text-gray-300 mb-2">Name</label>
+              <input
+                type="text"
+                name="name"
+                required
+                className="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none focus:border-blue-500"
+                placeholder="Your name"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-300 mb-2">Email</label>
+              <input
+                type="email"
+                name="email"
+                required
+                className="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none focus:border-blue-500"
+                placeholder="your@email.com"
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-gray-300 mb-2">Message</label>
+              <textarea
+                name="message"
+                required
+                rows={5}
+                className="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white outline-none focus:border-blue-500 resize-none"
+                placeholder="Write your message..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all"
             >
-              <Mail size={18} />
-              Email Me
-            </motion.a>
+              Send Message
+            </button>
+          </motion.form>
 
-            <motion.a
-              href={resumeData.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-blue-600 text-blue-400 rounded-lg font-semibold hover:bg-slate-700 transition-all"
-            >
-              <Linkedin size={18} />
-              LinkedIn
-            </motion.a>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 text-center flex flex-col justify-center"
+          >
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Interested in working together?
+            </h3>
 
-            <motion.a
-              href={resumeData.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-blue-600 text-blue-400 rounded-lg font-semibold hover:bg-slate-700 transition-all"
-            >
-              <Github size={18} />
-              GitHub
-            </motion.a>
+            <p className="text-gray-400 mb-8">
+              I’d be happy to discuss frontend development, MERN stack projects,
+              or UI-focused web application roles.
+            </p>
 
-            <motion.a
-              href="/resume.pdf"
-              download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-blue-600 text-blue-400 rounded-lg font-semibold hover:bg-slate-700 transition-all"
-            >
-              <Download size={18} />
-              Resume
-            </motion.a>
-          </div>
-        </motion.div>
+            <div className="flex flex-col gap-4">
+              <motion.a
+                href={`mailto:${resumeData.email}`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all"
+              >
+                <Mail size={18} />
+                Email Me
+              </motion.a>
+
+              <motion.a
+                href={resumeData.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-blue-600 text-blue-400 rounded-lg font-semibold hover:bg-slate-700 transition-all"
+              >
+                <Linkedin size={18} />
+                LinkedIn
+              </motion.a>
+
+              <motion.a
+                href={resumeData.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-blue-600 text-blue-400 rounded-lg font-semibold hover:bg-slate-700 transition-all"
+              >
+                <Github size={18} />
+                GitHub
+              </motion.a>
+
+              <motion.a
+                href="/resume.pdf"
+                download
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-blue-600 text-blue-400 rounded-lg font-semibold hover:bg-slate-700 transition-all"
+              >
+                <Download size={18} />
+                Resume
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
